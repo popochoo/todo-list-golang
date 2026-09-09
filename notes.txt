@@ -1,0 +1,3 @@
+в Makefile в таргете migrate-create строка -dir //migrations написано два слеша из-за бага git bash windowns исправить потом нужно на 1 слэш
+
+в Makefile в таргете migrate-action строка -path //migrations написано два слеша из-за бага git bash windowns исправить потом нужно на 1 слэш
