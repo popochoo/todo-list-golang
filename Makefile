@@ -13,7 +13,7 @@ env-cleanup:
 	@read -p "Clean up all environment volume files? Data loss hazard. [y/N]: " ans; \
 	if [ "$$ans" = "y" ]; then \
 		docker compose down todolist-postgres port-forwarder && \
-		rm -rf out/pgdata && \
+		rm -rf ${PROJECT_ROOT}/out/pgdata && \
 		echo "Environment files cleared"; \
 	else \
 		echo "Cleanup canceled"; \
@@ -56,4 +56,4 @@ todolist-run:
 	@export LOGGER_FOLDER=${PROJECT_ROOT}/out/logs && \
 	export POSTGRES_HOST=localhost && \
 	go mod tidy && \
-	go run cmd/todolist/main.go
+	go run ${PROJECT_ROOT}/cmd/todolist/main.go
