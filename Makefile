@@ -1,7 +1,7 @@
 include .env
 export
 
-export PROJECT_ROOT=${shell pwd}
+export PROJECT_ROOT=$(shell pwd -W 2>/dev/null || pwd)
 
 env-up:
 	@docker compose up -d todolist-postgres
@@ -66,3 +66,9 @@ todolist-run:
 	export POSTGRES_HOST=localhost && \
 	go mod tidy && \
 	go run ${PROJECT_ROOT}/cmd/todolist/main.go
+
+todolist-deploy:
+	@docker compose up -d --build todolist
+
+ps:
+	@docker compose ps
